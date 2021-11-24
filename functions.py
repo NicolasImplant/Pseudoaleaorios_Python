@@ -1,3 +1,5 @@
+import random as rd
+
 def numero(x:int,n:list=[]) -> list:
     num1 = x % 10
     num2 = x // 10
@@ -27,3 +29,10 @@ def square_mean(Seed:int, v:list=[], random:dict={}) -> list:
             v = v[int((8-len(v))/2):int(-(8-len(v))/2)]
     random[Seed] = [vector(v),vector(v)/(10**4)]        
     return random[Seed]
+
+def primeNumber(primes:list=[]):
+    x = {n:[i for i in range(1,n+1) if n % i == 0] for n in range(2000,6000)}
+    for key, value in x.items():
+        if len(value) == 2:
+            primes.append(key)
+    return primes[rd.randint(0,len(primes))]
