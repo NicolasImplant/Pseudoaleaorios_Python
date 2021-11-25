@@ -88,3 +88,24 @@ def primeNumber(primes:list=[]) -> list:
         if len(value) == 2:
             primes.append(key)
     return primes[rd.randint(0,len(primes))]
+
+
+# Función que genera el numero aleatorio y lo regresa junto con el siguiente paso.
+# Function that generates the random number and returns it along with the next step.
+
+def multiplicativo(a:int, x:int ,m:int, random:dict ={}) -> int:
+    try: 
+        return random[a,x,m]
+    except KeyError:
+        random[a,x,m] = [ (a*x) % m, ((a*x) % m)/(m-1) ]
+        return random[a,x,m] 
+
+# Función que genera el numero aleatorio y lo regresa junto con el siguiente paso.
+# Function that generates the random number and returns it along with the next step.
+
+def cuadratico(x:int,a:int,b:int,c:int,m:int,random:dict={}) -> list:
+    try:
+        return random[x,a,b,c,m]
+    except KeyError:
+        random[x,a,b,c,m] = [((a*x**2) + (b*x) + c) % m, (((a*x**2) + (b*x) + c) % m) / (m-1)]
+    return random[x,a,b,c,m]
